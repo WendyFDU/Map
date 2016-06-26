@@ -1,0 +1,29 @@
+<ion-view hide-nav-bar="true" >
+  <ion-header-bar>
+    <button class="button button-icon icon ion-navicon " ng-click="backeToMap()"></button>
+    <div class="h1 title">城市景观大众点评</div>
+  </ion-header-bar>
+
+  <ion-content >
+
+
+    <div>
+      <a class="item item-thumbnail-left" ng-repeat="menuItem in menuItemList"
+        >
+        <h2>{{menuItem.name}}</h2>
+      </a>
+    </div>
+
+    <!--<ul class="nav nav-tabs navbar-fixed-top">-->
+      <!--<li>-->
+        <!--<a href="#" class="glyphicon glyphicon-backward"></a>-->
+      <!--</li>-->
+      <!--<li class="active">-->
+        <!--<a href="#" class="nav-title">1933老场坊</a>-->
+      <!--</li>-->
+    <!--</ul>-->
+
+  </ion-content>
+
+</ion-view>
+
