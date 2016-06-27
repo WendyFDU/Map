@@ -8,31 +8,31 @@ itemListModule.controller('ItemListCtrl',function($scope,$state,$ionicHistory){
   $scope.itemList[0] = {
     id : 0,
     name:"世纪公园",
-    score:"30",
+    score:"9",
     star:"60",
     come:"90",
     wish:"10",
-    show:"",
+    show:"9",
     sortType :"评分"
   }
   $scope.itemList[1] = {
     id : 1,
     name:"人民公园",
-    score:"120",
+    score:"8",
     star:"10",
     come:"20",
     wish:"60",
-    show:"",
+    show:"8",
     sortType :"评分"
   }
   $scope.itemList[2] = {
     id : 2,
     name:"新天地绿岛",
-    score:"60",
+    score:"7",
     star:"40",
     come:"30",
     wish:"40",
-    show:"",
+    show:"7",
     sortType :"评分"
   }
 
@@ -57,32 +57,32 @@ itemListModule.controller("TypeController",function($scope){
       $scope.itemList[0] = {
         id : 0,
         name:"世纪公园",
-        score:"30",
+        score:"9",
         star:"60",
         come:"90",
         wish:"10",
-        show:"",
+        show:"9",
         sortType :"评分"
 
       }
       $scope.itemList[1] = {
         id : 1,
         name:"人民公园",
-        score:"120",
+        score:"8",
         star:"10",
         come:"20",
         wish:"60",
-        show:"",
+        show:"8",
         sortType :"评分"
       }
       $scope.itemList[2] = {
         id : 2,
         name:"新天地绿岛",
-        score:"60",
+        score:"7",
         star:"40",
         come:"30",
         wish:"40",
-        show:"",
+        show:"7",
         sortType :"评分"
       }
     }
@@ -90,31 +90,31 @@ itemListModule.controller("TypeController",function($scope){
       $scope.itemList[0] = {
         id : 0,
         name:"1933老场坊",
-        score:"30",
+        score:"9.5",
         star:"60",
         come:"90",
         wish:"10",
-        show:"",
+        show:"9.5",
         sortType :"评分"
       }
       $scope.itemList[1] = {
         id : 1,
         name:"高雄驳二",
-        score:"60",
+        score:"8",
         star:"10",
         come:"20",
         wish:"60",
-        show:"",
+        show:"8",
         sortType :"评分"
       }
       $scope.itemList[2] = {
         id : 2,
         name:"松山文创",
-        score:"120",
+        score:"6",
         star:"40",
         come:"30",
         wish:"40",
-        show:"",
+        show:"6",
         sortType :"评分"
       }
     }
@@ -383,10 +383,87 @@ itemListModule.controller("RankController",function($scope){
     $scope.back = function () {
       $ionicHistory.goBack();
     };
+    $scope.dragAType = function(typeId){
+      console.log("typeId:"+typeId);
+
+      //console.log("typeId:"+typeId)
+    };
+    $scope.releaseAType = function(typeId){
+      console.log("releasetypeId:"+typeId);
+
+      //console.log("typeId:"+typeId)
+    };
+
+
     $scope.sceneId = $stateParams.IdOfScene;
+    $scope.activityTypes=[{
+      id:1,
+
+      color:"1",
+      name:"运动(跑步骑行球类)"
+    },{
+      id:2,
+      color:"2",
+      name:"健身"
+
+    },{
+      id:3,
+      color:"3",
+      name:"交往活动"
+    },{
+      id:4,
+      color:"4",
+      name:"观赏"
+    }];
+    $scope.placeTypeClick = function(){
+      $scope.activityTypes=[{
+        id:1,
+        color:"1",
+        name:"亲近自然"
+      },{
+        id:2,
+        color:"2",
+        name:"锻炼健身"
+
+      },{
+        id:3,
+        color:"3",
+        name:"聚会交友"
+      },{
+        id:4,
+        color:"4",
+        name:"美的体验"
+      },{
+        id:5,
+        color:"5",
+        name:"观察学习"
+      }];
+    };
+    $scope.activityTypeClick = function(){
+      $scope.activityTypes=[];
+
+      $scope.activityTypes=[{
+        id:1,
+        color:"1",
+        name:"运动(跑步骑行球类)"
+      },{
+        id:2,
+        color:"2",
+        name:"健身"
+
+      },{
+        id:3,
+        color:"3",
+        name:"交往活动"
+      },{
+        id:4,
+        color:"4",
+        name:"观赏"
+      }];
+    };
 
 
-  })
+  });
 
 //
 //angular.module('education.courseCtrl', [])

@@ -1,31 +1,27 @@
 <ion-view hide-nav-bar="true" >
 
   <ion-header-bar>
-    <button class="button button-icon icon ion-arrow-return-left " ng-click="back()"></button>
-    <button class="button button-icon icon ion-navicon " ng-click="showMenuItemList()"></button>
+    <button class="button button-icon icon ion-arrow-return-left " ng-click="back();"></button>
+    <button class="button button-icon icon ion-navicon " ng-click=" showMenuItemList();"></button>
+
     <div class="h1 title">{{sceneId}}使用评价</div>
   </ion-header-bar>
 
 
-  <ion-content >
+  <ion-content overflow-scroll="true" style="overflow: hidden" >
 
     <div id="main-screen" width="100%" height="100%">
       <img src="img/fakemap.png" width="100%" height="500dp">
     </div>
-
-  </ion-content>
-  <ion-content class="col col-90 row row-bottom " height="200dp" bakcg>
-    <div class="card">
-      <!--<div class="item item-text-wrap">-->
-        <div
-          >
-          <span ng-repeat="acType in activityTypes" class="ion-ios-color-filter">{{acType.name}}</span>
-
-        </div>
-      <!--</div>-->
+    <div style="width:100%; height: 10%;background-color:#ffffff;position: absolute;bottom: 0 " >
+      <div ng-repeat="acType in activityTypes" style="display: inline">
+        <span  class="ion-ios-color-filter" on-drag="dragAType(acType.id)" on-release="releaseAType(acType.id)">{{acType.name}}</span>
+        <!--<button ng-repeat="acType in activityTypes" class=" button  button-icon icon ion-ios-color-filter" on-drag="dragAType(acType.id)" on-release="releaseAType(acType.id)">{{acType.name}}</button>-->
+      </div>
     </div>
 
   </ion-content>
+
 
   <ion-footer-bar>
 
