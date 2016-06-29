@@ -7,25 +7,32 @@
   </ion-header-bar>
 
 
-  <ion-content >
+  <ion-content overflow-scroll="true" style="overflow: hidden" >
 
-    <div id="main-screen" width="100%" height="100%">
-      <img src="img/fakemap.png" width="100%" height="500dp">
+    <div id="main-screen" style="overflow: visible;height: 100%;width: 100%" >
+      <div id="evaluationmap" style="overflow: visible;height: 100%;width:100%"></div>
     </div>
+    <div class="card"  style="margin:0;width:100%; height: 30%;background-color:#ffffff;position: absolute;bottom: 0 " >
+      <div style="margin: 10px">
+        <div>
 
-  </ion-content>
-  <ion-content class="col col-90 row row-bottom " height="200dp" bakcg>
-    <div class="card">
-      <!--<div class="item item-text-wrap">-->
-        <div
-          >
-          <span ng-repeat="acType in activityTypes" class="ion-ios-color-filter">{{acType.name}}</span>
+          <button class="icon ion-ios-heart-outline" ng-repeat="acType in activityTypes">   {{acType.name}}</button>
+
 
         </div>
-      <!--</div>-->
+
+      </div>
+
     </div>
 
+    <!--<ion-scroll  direction="y" locking="true" style="width:100%; height: 30%;background-color:#ffffff;position: absolute;bottom: 0 " >-->
+
+      <!-- -->
+      <!--</ion-scroll>-->
+
+
   </ion-content>
+
 
   <ion-footer-bar>
 
@@ -35,7 +42,7 @@
     <ion-scroll zooming="true" direction="y" locking="true" style="width: 1000px; height: 1000px">
       <button class="button button-light" ng-click="activityTypeClick()" >活动类型</button>
       <button class="button button-light" ng-click="placeTypeClick()">场所类型</button>
-      <button class="button button-light">建议</button>
+      <button class="button button-light" ng-click="giveSuggestionClick()">建议</button>
       <button class="button button-light" ng-click="goToEvaluate()">去评价</button>
       <button class="button button-light">使用评价</button>
       <button class="button button-light">调查问卷</button>

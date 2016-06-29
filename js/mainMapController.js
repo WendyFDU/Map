@@ -5,6 +5,22 @@ var mapMadule = angular.module('mainmap.controllers', []);
   mapMadule.controller('MainMapCtrl',function ($scope,$state){
 
     console.log("here in show map");
+
+    var map = new BMap.Map("allmap");
+    console.log("map:"+map);
+    map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);
+
+    $scope.$watch('searchInput', function() {
+      console.log($scope.searchInput);
+    });
+    $scope.$watch('searchParam', function () {    // 使用过滤器过滤数据
+      $scope.modelList = $filter('filter')($scope.modelList, 'searchParam');});
+
+    //$scope.searchInput="";
+
+    $scope.search = function(){
+      //console.log($scope.searchInput);
+    }
     $scope.showMenuItemList = function () {
 
       $state.go('menuItemList');
@@ -14,6 +30,32 @@ var mapMadule = angular.module('mainmap.controllers', []);
 
       $state.go('itemList');
     };
+    $scope.checkTypeList=[{
+      name:"上海近代公园",
+      checked:true
+    },{
+      name:"上海工业遗址",
+      checked:true
+
+    },{
+      name:"上海特色街道",
+      checked:true
+
+    }
+      ];
+    //if($scope.checkTypeList[0].checked==false){
+    //  console.log("here change in false")
+    //}
+    //console.log("checked:"+$scope.checkTypeList[2].checked);
+
+    //
+    //
+    //if($scope.checkType.park==true){
+    //  console.log("park");
+    //}
+    //if($scope.industry==true){
+    //  console.log("industry");
+    //}
 
 
 
