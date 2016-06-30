@@ -1,10 +1,47 @@
 ﻿
 var itemListModule = angular.module('itemlist.controllers', ['ionic']);
-
+var sortT = "score";
 itemListModule.controller('ItemListCtrl',function($scope,$state,$ionicHistory){
+
+  //
+  //$http({
+  //  method: 'POST',
+  //  url: "http://localhost:8080/server/user",
+  //  params: {"sceneType" : "上海近代公园"},
+  //  headers: {
+  //    'Content-Type': 'application/json',
+  //    'Accept' : 'application/json',
+  //    'Access-Control-Allow-Origin': '*',
+  //    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, DELETE',
+  //    'Access-Control-Allow-Headers': 'X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method',
+  //    'Access-Control-Allow-Max-Age' : '100'
+  //  }
+  //}).success(function (response) {
+  //  console.log(response);
+  //  console.log(response.id+response.name+response.password);
+  //  sessionStorage.setItem('user', JSON.stringify(response));
+  //  $rootScope.isLogin = true;
+  //  if (window.localStorage) {
+  //    console.log("localStorage ", "login");
+  //    localStorage.setItem("isLogin", "login");
+  //    localStorage.setItem("userId", response.id);
+  //    localStorage.setItem("username", response.name);
+  //  } else {
+  //    console.log("cookie");
+  //    Cookie.write("isLogin", "login");
+  //    Cookie.write("userId", response.user.id);
+  //    Cookie.write("username", response.user.name);
+  //  }
+  //  //$state.go('tab.current');
+  //}).error(function (error) {
+  //    console.log(error);
+  //    $state.reload('itemList');
+  //  })
+
   $scope.itemList = new Array(3);
   $scope.itemListLength  = 3;
-  $scope.sortType = "评分";
+
+
 
   $scope.itemList[0] = {
     id : 0,
@@ -14,7 +51,7 @@ itemListModule.controller('ItemListCtrl',function($scope,$state,$ionicHistory){
     come:"90",
     wish:"10",
     show:"9",
-    sortType :"评分"
+    sortType :"score"
   }
   $scope.itemList[1] = {
     id : 1,
@@ -24,7 +61,7 @@ itemListModule.controller('ItemListCtrl',function($scope,$state,$ionicHistory){
     come:"20",
     wish:"60",
     show:"8",
-    sortType :"评分"
+    sortType :"score"
   }
   $scope.itemList[2] = {
     id : 2,
@@ -34,7 +71,7 @@ itemListModule.controller('ItemListCtrl',function($scope,$state,$ionicHistory){
     come:"30",
     wish:"40",
     show:"7",
-    sortType :"评分"
+    sortType :"score"
   }
 
   $scope.backeToMap = function () {
@@ -47,8 +84,9 @@ itemListModule.controller('ItemListCtrl',function($scope,$state,$ionicHistory){
 
   };
 
-});
-itemListModule.controller("TypeController",function($scope){
+})
+.controller("TypeController",function($scope){
+
   this.tab = 1;
   function JsonSort(json,key){
     //console.log(json);
@@ -64,14 +102,15 @@ itemListModule.controller("TypeController",function($scope){
       json[i+1] = temp;
 
     }
+    for( j = 0;j<jl;j++){
+      json[j]["show"] = json[j][key];
+      json[j]["sortType"] = key;
+    }
 
     return json;
 
   }
-
-  console.log("78: in change type sort "+$scope.sortType);
   this.selectTab = function(setTab){
-    console.log("80: in change type sort "+$scope.sortType);
     this.tab = setTab;
     if(setTab==1){
       $scope.itemList[0] = {
@@ -82,8 +121,7 @@ itemListModule.controller("TypeController",function($scope){
         come:"90",
         wish:"10",
         show:"9",
-        sortType :"评分"
-
+        sortType :"score"
       }
       $scope.itemList[1] = {
         id : 1,
@@ -93,7 +131,7 @@ itemListModule.controller("TypeController",function($scope){
         come:"20",
         wish:"60",
         show:"8",
-        sortType :"评分"
+        sortType :"score"
       }
       $scope.itemList[2] = {
         id : 2,
@@ -103,12 +141,10 @@ itemListModule.controller("TypeController",function($scope){
         come:"30",
         wish:"40",
         show:"7",
-        sortType :"评分"
+        sortType :"score"
       }
-      console.log("111:"+$scope.itemList[2].name);
-      $scope.itemList = JsonSort($scope.itemList,$scope.sortType);
-      console.log("113:"+$scope.itemList[2].name);
-
+      console.log("148:"+" "+$scope.itemList[2].sortType+" "+sortT);
+      $scope.itemList = JsonSort($scope.itemList,sortT);
     }
     if(setTab==2){
       $scope.itemList[0] = {
@@ -119,7 +155,7 @@ itemListModule.controller("TypeController",function($scope){
         come:"90",
         wish:"10",
         show:"9.5",
-        sortType :"评分"
+        sortType :"score"
       }
       $scope.itemList[1] = {
         id : 4,
@@ -129,7 +165,7 @@ itemListModule.controller("TypeController",function($scope){
         come:"20",
         wish:"60",
         show:"8",
-        sortType :"评分"
+        sortType :"score"
       }
       $scope.itemList[2] = {
         id : 5,
@@ -139,70 +175,98 @@ itemListModule.controller("TypeController",function($scope){
         come:"30",
         wish:"40",
         show:"6",
-        sortType :"评分"
+        sortType :"score"
       }
-      console.log("147:"+$scope.itemList[2].name);
-      $scope.itemList = JsonSort($scope.itemList,$scope.sortType);
-      console.log("149:"+$scope.itemList[2].show);
+      //console.log("181:"+$scope.itemList[2].show+" "+$scope.itemList[2].sortType+" "+sortT);
+      $scope.itemList = JsonSort($scope.itemList,sortT);
+      console.log("183:"+$scope.itemList[2].show+" "+$scope.itemList[2].sortType+" "+sortT);
+
     }
   }
   this.isSelectTab = function(checkTab){
     return this.tab === checkTab;
 
-  }
-});
-itemListModule.controller("RankController",function($scope){
-  //console.log("test yu:"+$scope.sortType);
-  this.tab = 1;
-    function JsonSort(json,key){
-      //console.log(json);
-      var jl=json.length;
-      for(var j=1;j < jl;j++){
-        var temp = json[j],
-          val  = temp[key],
-          i    = j-1;
-        while(i >=0 && json[i][key]<val){
-          json[i+1] = json[i];
-          i = i-1;
-        }
-        json[i+1] = temp;
+  };
+    this.tab = 1;
+    this.selectSortTab = function(setTab){
+      this.tab = setTab;
+      if(setTab==1){
+        var length = $scope.itemList.length;
+        sortT= "score";
+        $scope.itemList = JsonSort($scope.itemList,sortT);
       }
-      for( j = 0;j<jl;j++){
-        json[j]["show"] = json[j][key];
-        json[j]["sortType"] = key;
+      if(setTab==2){
+        sortT = "star";
+        $scope.showItemList = JsonSort($scope.itemList,sortT);
+        console.log("sortT:"+sortT);
       }
-      return json;
-    }
-  this.selectTab = function(setTab){
-    this.tab = setTab;
-    if(setTab==1){
-      var length = $scope.itemList.length;
-      console.log("test here length:"+length);
-      $scope.sortType = "评分";
-      console.log("test yu:"+$scope.sortType);
-      $scope.itemList = JsonSort($scope.itemList,'score');
-    }
-    if(setTab==2){
-      $scope.showItemList = JsonSort($scope.itemList,'star');
-      $scope.sortType = "收藏";
-      console.log("test yu:"+$scope.sortType);
-    }
-    if(setTab==3){
-      $scope.showItemList = JsonSort($scope.itemList,'come');
-      $scope.sortType = "足迹";
-      console.log("test yu:"+$scope.sortType);
-    }
-    if(setTab==4){
-      $scope.showItemList = JsonSort($scope.itemList,'wish');
-      $scope.sortType = "心愿";
-      console.log("test yu:"+$scope.sortType);
-    }
-  }
+      if(setTab==3){
+        sortT= "come";
+        $scope.showItemList = JsonSort($scope.itemList,sortT);
 
-  this.isSelectTab = function(checkTab){
-    return this.tab === checkTab
-  }
+      }
+      if(setTab==4){
+        sortT= "wish";
+        $scope.showItemList = JsonSort($scope.itemList,sortT);
+      }
+    }
+
+    this.isSelectSortTab = function(checkTab){
+      return this.tab === checkTab
+    }
 })
+  //.controller("RankController",function($scope){
+  ////console.log("test yu:"+$scope.sortType);
+  //this.tab = 1;
+  //  function JsonSort(json,key){
+  //    //console.log(json);
+  //    var jl=json.length;
+  //    for(var j=1;j < jl;j++){
+  //      var temp = json[j],
+  //        val  = temp[key],
+  //        i    = j-1;
+  //      while(i >=0 && json[i][key]<val){
+  //        json[i+1] = json[i];
+  //        i = i-1;
+  //      }
+  //      json[i+1] = temp;
+  //    }
+  //    for( j = 0;j<jl;j++){
+  //      json[j]["show"] = json[j][key];
+  //      json[j]["sortType"] = key;
+  //    }
+  //    return json;
+  //  }
+  //this.selectSortTab = function(setTab){
+  //  this.tab = setTab;
+  //  if(setTab==1){
+  //    var length = $scope.itemList.length;
+  //    console.log("test here length:"+length);
+  //    $scope.sortType = "评分";
+  //    console.log("test yu:"+$scope.sortType);
+  //    $scope.itemList = JsonSort($scope.itemList,'score');
+  //  }
+  //  if(setTab==2){
+  //    $scope.showItemList = JsonSort($scope.itemList,'star');
+  //    $scope.sortType = "收藏";
+  //    console.log("test yu:"+$scope.sortType);
+  //  }
+  //  if(setTab==3){
+  //    $scope.showItemList = JsonSort($scope.itemList,'come');
+  //    $scope.sortType = "足迹";
+  //    console.log("test yu:"+$scope.sortType);
+  //  }
+  //  if(setTab==4){
+  //    $scope.showItemList = JsonSort($scope.itemList,'wish');
+  //    $scope.sortType = "心愿";
+  //    console.log("test yu:"+$scope.sortType);
+  //  }
+  //}
+  //
+  //this.isSelectSortTab = function(checkTab){
+  //  return this.tab === checkTab
+  //}
+//})
   .controller("SceneDetailCtrl",function($scope,$state,$stateParams,$ionicHistory,$ionicActionSheet){
     console.log("name"+$stateParams.NameOfScene);
     $scope.sceneId = $stateParams.IdOfScene;
@@ -364,6 +428,18 @@ itemListModule.controller("RankController",function($scope){
     $scope.detailinfo="我是详细信息我是详细信息我是详细信息我是详细信息我是详细信息我是详细信息我是详细信息我是详细信息我是详细信息我是详细信息我是详细信息我是详细信息我是详细信息我是详细信息我是详细信息我是详细信息我是详细信息我是详细信息我是详细信息我是详细信息我是详细信息我是详细信息";
     console.log("id"+$stateParams.IdOfScene);
     $scope.sceneId = $stateParams.IdOfScene;
+
+    $scope.starState="ion-ios-star-outline";
+    $scope.addIntoStar = function(){
+      if($scope.starState=="ion-ios-star-outline"){
+        $scope.starState="ion-ios-star";
+        console.log("add Into Star");
+      }
+      else{
+        $scope.starState="ion-ios-star-outline"
+        console.log("remove from star")
+      }
+    }
     $scope.addIntoWishlist= function () {
       console.log("here left to back end add wishlist");
 

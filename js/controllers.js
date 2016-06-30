@@ -44,7 +44,7 @@ angular.module('starter.controllers', [])
     //        Cookie.write("username", response.user.name);
     //      }
           $state.go('mainmap');
-    //      $state.go('tab.current');
+          //$state.go('tab.current');
     //    })
     //    .error(function (error) {
     //      console.log(error);

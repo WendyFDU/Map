@@ -31,7 +31,7 @@
         <label class="item-input-wrapper">
           <input type="text" placeholder="Email" ng-model="searchInput">
         </label>
-        <button class="button button-small" ng-click="search()">
+        <button class="button button-small" ng-click="search(searchInput)">
           Submit
         </button>
       </div>
@@ -41,7 +41,7 @@
     <ion-list width="30dp" style="position: absolute;right: 0">
 
 
-      <ion-checkbox ng-repeat="item in checkTypeList"  ng-model="item.checked" style="padding:4px;padding-left: 60px;">{{item.name}}</ion-checkbox>
+      <ion-checkbox ng-repeat="item in checkTypeList"  ng-click="clickTheCheckbox({{item.id}})" ng-model="item.checked" style="padding:4px;padding-left: 60px;">{{item.name}}</ion-checkbox>
       <!--<ion-checkbox ng-model="checkType.industry"style="padding:4px;padding-left: 60px;">上海工业遗址</ion-checkbox>-->
       <!--<ion-checkbox ng-model="filter.pink"style="padding:4px;padding-left: 60px;">Pink</ion-checkbox>-->
 

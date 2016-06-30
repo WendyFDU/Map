@@ -26,8 +26,8 @@
       <section ng-init="tab = 1" ng-controller="TypeController as typePanel">
         <ul>
 
-            <a href ng-class="{ active:typePanel.isSelectTab(1)}"  ng-click="typePanel.selectTab(1)"><i class="icon ion-home"></i>上海近代公园</a>
-            <a href ng-class="{ active:typePanel.isSelectTab(2)}"  ng-click="typePanel.selectTab(2)"><i class="icon ion-star"></i>上海工业遗址</a>
+            <a ng-class="{ active:typePanel.isSelectTab(1)}"  ng-click="typePanel.selectTab(1)"><i class="icon ion-home"></i>上海近代公园</a>
+            <a ng-class="{ active:typePanel.isSelectTab(2)}"  ng-click="typePanel.selectTab(2)"><i class="icon ion-star"></i>上海工业遗址</a>
         </ul>
 
       </section>
@@ -44,13 +44,13 @@
     </div>
 
     <div >
-      <section ng-init="tab = 1" ng-controller="RankController as rankPanel">
+      <section ng-init="tab = 1" ng-controller="TypeController as rankPanel">
 
           <div class="button-bar">
-            <a class=" button button-small button-light" href ng-class="{ active:rankPanel.isSelectTab(1)}"  ng-click="rankPanel.selectTab(1)"   ><i class="icon-left ion-home"></i>评分</a>
-            <a class=" button button-small button-light" href ng-class="{ active:rankPanel.isSelectTab(2)}"  ng-click="rankPanel.selectTab(2)" ><i class="icon-left ion-star"></i>收藏</a>
-            <a class=" button button-small button-light" href ng-class="{ active:rankPanel.isSelectTab(3)}"  ng-click="rankPanel.selectTab(3)" ><i class="icon-left ion-star"></i>足迹</a>
-            <a class=" button button-small button-light" href ng-class="{ active:rankPanel.isSelectTab(4)}"  ng-click="rankPanel.selectTab(4)"><i class="icon-left ion-star"></i>心愿</a>
+            <a class=" button button-small button-light" href ng-class="{ active:rankPanel.isSelectSortTab(1)}"  ng-click="rankPanel.selectSortTab(1)"   ><i class="icon-left ion-home"></i>评分</a>
+            <a class=" button button-small button-light" href ng-class="{ active:rankPanel.isSelectSortTab(2)}"  ng-click="rankPanel.selectSortTab(2)" ><i class="icon-left ion-star"></i>收藏</a>
+            <a class=" button button-small button-light" href ng-class="{ active:rankPanel.isSelectSortTab(3)}"  ng-click="rankPanel.selectSortTab(3)" ><i class="icon-left ion-star"></i>足迹</a>
+            <a class=" button button-small button-light" href ng-class="{ active:rankPanel.isSelectSortTab(4)}"  ng-click="rankPanel.selectSortTab(4)"><i class="icon-left ion-star"></i>心愿</a>
 
           </div>
 

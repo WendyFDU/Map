@@ -13,13 +13,13 @@ var mapMadule = angular.module('mainmap.controllers', []);
     $scope.$watch('searchInput', function() {
       console.log($scope.searchInput);
     });
-    $scope.$watch('searchParam', function () {    // 使用过滤器过滤数据
-      $scope.modelList = $filter('filter')($scope.modelList, 'searchParam');});
+    //$scope.$watch('searchParam', function () {    // 使用过滤器过滤数据
+    //  $scope.modelList = $filter('filter')($scope.modelList, 'searchParam');});
 
     //$scope.searchInput="";
 
-    $scope.search = function(){
-      //console.log($scope.searchInput);
+    $scope.search = function(searchInput){
+      console.log("searchInput:"+searchInput);
     }
     $scope.showMenuItemList = function () {
 
@@ -31,32 +31,26 @@ var mapMadule = angular.module('mainmap.controllers', []);
       $state.go('itemList');
     };
     $scope.checkTypeList=[{
+      id:0,
       name:"上海近代公园",
       checked:true
     },{
+      id:1,
       name:"上海工业遗址",
       checked:true
 
     },{
+      id:2,
       name:"上海特色街道",
       checked:true
 
     }
       ];
-    //if($scope.checkTypeList[0].checked==false){
-    //  console.log("here change in false")
-    //}
-    //console.log("checked:"+$scope.checkTypeList[2].checked);
 
-    //
-    //
-    //if($scope.checkType.park==true){
-    //  console.log("park");
-    //}
-    //if($scope.industry==true){
-    //  console.log("industry");
-    //}
 
+    $scope.clickTheCheckbox = function(id){
+      console.log(id+" "+$scope.checkTypeList[id].checked);
+    }
 
 
 });

@@ -12,7 +12,7 @@
     <div class="card">
       <div class="item item-divider">
         基本信息
-        <button class="icon button-icon ion-ios-heart-outline">收藏</button>
+        <button class="icon button-icon {{starState}}" ng-click="addIntoStar()">收藏</button>
         <button class="icon button-icon ion-share" ng-click="showSharePanel()">分享</button>
       </div>
       <div class="item item-text-wrap">
