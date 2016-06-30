@@ -1,0 +1,29 @@
+.my-head {
+
+}
+.my-head img {
+  width: 100px;
+  height: 100px;
+}
+.my-detail-button-bar {
+  width: 50%;
+}
+.my-detail-button .button {
+  border-color: #ddd;
+}
+
+.nearby-foot-menu {
+  margin-top: 20px;
+}
+
+.route-planning-input input {
+  width: 100px;
+}
+
+.nearby-item-detail {
+  display: none;
+}
+
+.route-planning-item-detail {
+  display: none;
+}

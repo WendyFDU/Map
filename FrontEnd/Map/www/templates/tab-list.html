@@ -1,0 +1,59 @@
+<ion-view hide-nav-bar="true" >
+  <ion-header-bar>
+    <!--<div class="bar bar-header">-->
+      <!--<button class="button button-icon icon ion-navicon "></button>-->
+      <!--<div class="h1 title">城市景观大众点评</div>-->
+    <!--</div>-->
+    <button class="button button-icon icon ion-navicon " ng-click="backeToMap()"></button>
+    <div class="h1 title">城市景观大众点评</div>
+  </ion-header-bar>
+
+  <ion-content >
+    <div>
+      <a class="item item-thumbnail-left" ng-repeat="item in itemList"
+        >
+        <h2>{{item.name}}</h2>
+      </a>
+    </div>
+
+    <!--<ul class="nav nav-tabs navbar-fixed-top">-->
+      <!--<li>-->
+        <!--<a href="#" class="glyphicon glyphicon-backward"></a>-->
+      <!--</li>-->
+      <!--<li class="active">-->
+        <!--<a href="#" class="nav-title">1933老场坊</a>-->
+      <!--</li>-->
+    <!--</ul>-->
+
+  </ion-content>
+
+
+
+  <ion-tabs class="tabs-icon-bottom tabs-color-active-positive">
+    <!-- Dashboard Tab -->
+    <ion-tab title="项目列表" icon-off="ion-ios-pulse" icon-on="ion-ios-pulse-strong" >
+      <ion-nav-view name="tab-dash"></ion-nav-view>
+    </ion-tab>
+
+    <!-- Chats Tab -->
+    <ion-tab title="附近" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" >
+      <ion-nav-view name="tab-chats"></ion-nav-view>
+    </ion-tab>
+
+    <ion-tab title="搜索历史" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" >
+      <ion-nav-view name="tab-account"></ion-nav-view>
+    </ion-tab>
+
+    <!-- Account Tab -->
+    <ion-tab title="路线规划" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" >
+      <ion-nav-view name="tab-account"></ion-nav-view>
+    </ion-tab>
+    <!-- Account Tab -->
+    <ion-tab title="我的" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" >
+      <ion-nav-view name="tab-account"></ion-nav-view>
+    </ion-tab>
+
+
+  </ion-tabs>
+</ion-view>
+

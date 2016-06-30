@@ -1,0 +1,61 @@
+<ion-view hide-nav-bar="true" >
+  <ion-header-bar>
+    <button class="button button-icon icon ion-arrow-return-left " ng-click="backToMap()"></button>
+    <div class="h1 title">路线规划</div>
+  </ion-header-bar>
+
+  <ion-content  ng-controller="RoutePlanningCtrl" overflow-scroll="true" style="overflow: hidden">
+
+    <div class="list">
+
+      <div class="item item-input-inset route-planning-input">
+        <label class="item-input-wrapper">
+          <input type="text" placeholder="出发地" ng-model="departureInput">
+        </label>
+        <span>至</span>
+        <label class="item-input-wrapper">
+          <input type="text" placeholder="目的地" ng-model="destinationInput">
+        </label>
+        <button class="button button-small" ng-click="planning(departureInput, destinationInput)">
+          Submit
+        </button>
+      </div>
+
+    </div>
+
+    <ion-list width="30dp" style="position: absolute;right: 0">
+
+      <ion-checkbox ng-repeat="item in checkTypeList"  ng-click="clickTheCheckbox({{item.id}})" ng-model="item.checked" style="padding:4px;padding-left: 60px;">{{item.name}}</ion-checkbox>
+
+    </ion-list>
+    <div>
+      <span>{{checkTypeList[0].checked}} {{checkTypeList[1].checked}} {{checkTypeList[2].checked}}</span>
+    </div>
+
+    <div class="card route-planning-item-detail" width="30dp" style="position: absolute;right: 0;bottom: 0;margin:0">
+      <div class="item item-divider">
+        <h2>{{selectedPoint.name}}</h2>
+        <h3>  {{selectedPoint.sortType}} : {{selectedPoint.show}}</h3>
+      </div>
+      <div class="item item-text-wrap">
+        <img src="{{selectedPoint.img}}" width="50px">
+      </div>
+      <div class="item item-divider">
+        <button class="button button-small"  ng-click = "jumpToSceneDetail(selectedPoint.id,selectedPoint.name)">
+          进入项目主页
+        </button>
+      </div>
+    </div>
+
+    <div id="main-screen" style="overflow: visible;height: 100%;width: 100%" >
+      <div id="nearby-map" style="overflow: visible;height: 100%;width:100%"></div>
+    </div>
+
+    <!--<div id="main-screen" style="overflow: visible;height: 500pt;width: 500pt" >-->
+    <!--&lt;!&ndash;img src="img/fakemap.png" width="100%" height="500dp"&ndash;&gt;-->
+    <!--<div id="allmap" style="overflow: visible;height: 500pt;width: 500pt"></div>-->
+    <!--</div>-->
+
+
+  </ion-content>
+</ion-view>

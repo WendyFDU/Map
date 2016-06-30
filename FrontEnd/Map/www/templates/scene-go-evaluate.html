@@ -1,0 +1,73 @@
+<ion-view hide-nav-bar="true" >
+
+  <ion-header-bar>
+    <button class="button button-icon icon ion-arrow-return-left " ng-click="back();"></button>
+    <button class="button button-icon icon ion-navicon " ng-click=" showMenuItemList();"></button>
+
+    <div class="h1 title">{{sceneId}}使用评价</div>
+  </ion-header-bar>
+
+
+  <ion-content overflow-scroll="true" style="overflow: hidden" >
+    <!--<div>-->
+      <!--<span>jjjjjjj</span>-->
+    <!--</div>-->
+    <div id="main-screen" style="overflow: visible;height: 100%;width: 100%" >
+      <div id="goevaluatemap" style="overflow: visible;height: 100%;width:100%"></div>
+      <div class="ion-ios-heart button-light button-outline button-small" style="position: absolute;top: 140px;left: 200px;color: #009689"><button>10</button></div>
+
+    </div>
+
+
+    <!--<div style="width:100%; height: 10%;background-color:#ffffff;position: absolute;bottom: 0 " >-->
+      <!--<div ng-repeat="acType in activityTypes" style="display: inline">-->
+        <!--<span  class="ion-ios-color-filter" on-drag="dragAType(acType.id)" on-release="releaseAType(acType.id)">{{acType.name}}</span>-->
+        <!--&lt;!&ndash;<button ng-repeat="acType in activityTypes" class=" button  button-icon icon ion-ios-color-filter" on-drag="dragAType(acType.id)" on-release="releaseAType(acType.id)">{{acType.name}}</button>&ndash;&gt;-->
+      <!--</div>-->
+    <!--</div>-->
+
+
+    <div class="card"  style="margin:0;width:100%; height: 30%;background-color:#ffffff;position: absolute;bottom: 0 " >
+      <div style="margin: 10px">
+        <div ng-repeat="acType in activityTypes" style="display: inline">
+          <button class="ion-ios-color-filter" on-drag="dragAType(acType.id)" on-release="releaseAType(acType.id)">{{acType.name}}</button>
+          <!--<button ng-repeat="acType in activityTypes" class=" button  button-icon icon ion-ios-color-filter" on-drag="dragAType(acType.id)" on-release="releaseAType(acType.id)">{{acType.name}}</button>-->
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+  </ion-content>
+
+
+  <ion-footer-bar>
+
+
+
+
+    <ion-scroll zooming="true" direction="y" locking="true" style="width: 1000px; height: 1000px">
+      <button class="button button-light" ng-click="activityTypeClick()" >活动类型</button>
+      <button class="button button-light" ng-click="placeTypeClick()">场所类型</button>
+      <button class="button button-light" ng-click="giveSuggestionClick()">建议</button>
+
+      </ion-scroll>
+
+
+
+
+
+
+
+
+
+
+
+  </ion-footer-bar>
+
+
+
+</ion-view>
+

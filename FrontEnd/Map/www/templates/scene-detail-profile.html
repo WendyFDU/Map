@@ -1,0 +1,96 @@
+<ion-view hide-nav-bar="true" >
+
+  <ion-header-bar>
+    <button class="button button-icon icon ion-arrow-return-left " ng-click="back()"></button>
+    <button class="button button-icon icon ion-navicon " ng-click="showMenuItemList()"></button>
+    <div class="h1 title">{{sceneId}}的详细资料</div>
+  </ion-header-bar>
+
+
+  <ion-content >
+
+    <div class="card">
+      <div class="item item-divider">
+        基本信息
+        <button class="icon button-icon {{starState}}" ng-click="addIntoStar()">收藏</button>
+        <button class="icon button-icon ion-share" ng-click="showSharePanel()">分享</button>
+      </div>
+      <div class="item item-text-wrap">
+        {{basicinfo}}
+      </div>
+    </div>
+    <div class="card">
+      <div class="item item-divider">
+        图片
+        <button class="icon button-icon ion-ios-more ">更多</button>
+      </div>
+      <div class="item item-text-wrap" ng-repeat="i in pictures">
+        {{i.picUrl}}kkk
+      </div>
+    </div>
+    <div class="card">
+
+      <div class="item item-text-wrap">
+        {{detailinfo}}
+      </div>
+    </div>
+
+
+  </ion-content>
+
+
+
+    <!--<ion-tabs class="tabs-icon-bottom tabs-color-active-positive">-->
+      <!--&lt;!&ndash; Dashboard Tab &ndash;&gt;-->
+      <!--<ion-tab title="项目列表" icon-off="ion-ios-pulse" icon-on="ion-ios-pulse-strong" >-->
+        <!--<ion-nav-view name="tab-dash"></ion-nav-view>-->
+      <!--</ion-tab>-->
+
+      <!--&lt;!&ndash; Chats Tab &ndash;&gt;-->
+      <!--<ion-tab title="附近" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" >-->
+        <!--<ion-nav-view name="tab-chats"></ion-nav-view>-->
+      <!--</ion-tab>-->
+
+      <!--<ion-tab title="搜索历史" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" >-->
+        <!--<ion-nav-view name="tab-account"></ion-nav-view>-->
+      <!--</ion-tab>-->
+
+      <!--&lt;!&ndash; Account Tab &ndash;&gt;-->
+      <!--<ion-tab title="路线规划" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" >-->
+        <!--<ion-nav-view name="tab-account"></ion-nav-view>-->
+      <!--</ion-tab>-->
+      <!--&lt;!&ndash; Account Tab &ndash;&gt;-->
+      <!--<ion-tab title="我的" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" >-->
+        <!--<ion-nav-view name="tab-account"></ion-nav-view>-->
+      <!--</ion-tab>-->
+
+
+    <!--</ion-tabs>-->
+
+
+  <!--</ion-footer-bar>-->
+  <ion-footer-bar>
+
+
+
+
+    <div class="button-bar">
+      <button class="button button-light" ng-click="addIntoWishlist()">加入心愿单</button>
+      <button class="button button-light" ng-click="addIntoCome()" >加入足迹</button>
+
+      <button class="button button-light" >报错</button>
+    </div>
+
+
+
+
+
+
+
+
+  </ion-footer-bar>
+
+
+
+</ion-view>
+

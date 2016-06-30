@@ -1,0 +1,189 @@
+<ion-view hide-nav-bar="true" >
+
+  <ion-header-bar>
+    <button class="button button-icon icon ion-arrow-return-left " ng-click="back()"></button>
+    <button class="button button-icon icon ion-navicon " ng-click="showMenuItemList()"></button>
+    <div class="h1 title">{{sceneName}}</div>
+  </ion-header-bar>
+
+
+  <ion-content overflow-scroll="true" style="overflow: hidden" >
+    <!--<style>-->
+      <!--.scene-star-false{-->
+        <!--color: gray;-->
+      <!--}-->
+
+      <!--.scene-star-true{-->
+        <!--color: red;-->
+      <!--}-->
+    <!--</style>-->
+
+    <!--<div id="main-screen" style="width:100%; height: 70%;background-color: #006666" >-->
+      <!--<img src="img/fakemap.png"style="width:100%; height: 100%" >-->
+    <!--</div>-->
+    <div id="main-screen" style="overflow: visible;height: 100%;width: 100%" >
+      <!--img src="img/fakemap.png" width="100%" height="500dp"-->
+      <div id="detailmap" style="overflow: visible;height: 100%;width:100%"></div>
+    </div>
+    <ion-scroll  direction="y" locking="true" style="width:100%; height: 30%;background-color:#ffffff;position: absolute;bottom: 0 " >
+
+      <div class="row">
+        <div class="col col-60">
+
+          <span>满意度评分</span><br>
+          <div >
+            <span ng-repeat="i in starArray track by $index" class="ion-star"></span>
+            <span ng-repeat="i in starOutlineArray track by $index" class="ion-ios-star-outline"></span>
+            <span>{{score}}</span>
+          </div>
+          <!--<a ng-repeat="i in range(2) track by $index">-->
+            <!--<span class="ion-ios-star-outline"></span>-->
+          <!--</a>-->
+          <!--<span class="ion-star" ng-repeat="i in range(6)">s</span>-->
+          <span>({{amountPeopleScore}}人评价)</span>
+          <div class="row">
+            <!--<span class="ion-star" style="height:10pt;background-color: #0074D9"></span><span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span><br>-->
+            <!--<span class="col"  style="background-color: #0074D9; height:10pt; width:20pt"></span><br>-->
+
+            <!--<span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span><span class="ion-ios-star-outline"></span><p></p>-->
+            <!--<span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span><span class="ion-ios-star-outline"></span><span class="ion-ios-star-outline"></span></br>-->
+            <!--<span class="ion-star"></span><span class="ion-star"></span><span class="ion-ios-star-outline"></span><span class="ion-ios-star-outline"></span><span class="ion-ios-star-outline"></span></br>-->
+            <!--<span class="ion-star"></span><span class="ion-ios-star-outline"></span><span class="ion-ios-star-outline"></span><span class="ion-ios-star-outline"></span><span class="ion-ios-star-outline"></span></br>-->
+
+            <div class="col">
+              <div style=" height: 10pt;width: 120pt">
+                <span class="ion-star" style="background-color: #0074D9"></span><span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span><span></span>
+                <!--<span class="col"  style="background-color: #0074D9; height:10pt; width:20pt"></span><br>-->
+                <span  style="overflow: visible;display: inline; height:10pt; width:50pt">{{scoreRange[0]}}</span>
+              </div>
+              <div style=" height: 10pt;width: 120pt">
+                <span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span><span class="ion-ios-star-outline"></span>
+                <span  style="overflow: visible;display: inline; height:10pt; width:50pt">{{scoreRange[1]}}</span>
+              </div>
+              <div style=" height: 10pt;width: 120pt">
+                <span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span><span class="ion-ios-star-outline"></span><span class="ion-ios-star-outline"></span>
+                <span  style="overflow: visible;display: inline; height:10pt; width:50pt">{{scoreRange[2]}}</span>
+              </div>
+              <div style=" height: 10pt;width: 120pt">
+                <span class="ion-star"></span><span class="ion-star"></span><span class="ion-ios-star-outline"></span><span class="ion-ios-star-outline"></span><span class="ion-ios-star-outline"></span>
+                <span  style="overflow: visible;display: inline; height:10pt; width:50pt">{{scoreRange[3]}}</span>
+              </div>
+              <div style=" height: 10pt;width: 120pt">
+                <span class="ion-star"></span><span class="ion-ios-star-outline"></span><span class="ion-ios-star-outline"></span><span class="ion-ios-star-outline"></span><span class="ion-ios-star-outline"></span>
+                <span  style="overflow: visible;display: inline; height:10pt; width:50pt">{{scoreRange[4]}}</span>
+              </div>
+
+
+
+            </div>
+            <!--<div class="col col-50">-->
+              <!--<span class="ion-star" style="height:10pt;background-color: #0074D9"></span><span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span><br>-->
+              <!--<span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span><span class="ion-ios-star-outline"></span></br>-->
+              <!--<span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span><span class="ion-ios-star-outline"></span><span class="ion-ios-star-outline"></span></br>-->
+              <!--<span class="ion-star"></span><span class="ion-star"></span><span class="ion-ios-star-outline"></span><span class="ion-ios-star-outline"></span><span class="ion-ios-star-outline"></span></br>-->
+              <!--<span class="ion-star"></span><span class="ion-ios-star-outline"></span><span class="ion-ios-star-outline"></span><span class="ion-ios-star-outline"></span><span class="ion-ios-star-outline"></span></br>-->
+
+              <!--<span class="col"  style="background-color: #0074D9; height:10pt; width:20pt"></span><br>-->
+              <!--<span class="col"  style="background-color: chocolate;width:20pt"></span>-->
+
+              <!--<span class="col"  style="background-color: #4cd964;width:20pt"></span>-->
+
+
+            <!--</div>-->
+
+          </div>
+          <!--<div width="100%">-->
+
+            <!--<div style="display:inline;">-->
+              <!--<span class="icon ion-ios-upload-outline"></span>-->
+            <!--</div>-->
+            <!--<div style="display:inline;height:10pt; width:100pt;background-color: #006666">-->
+            <!--</div>-->
+
+
+          <!--</div>-->
+
+
+        </div>
+        <div class="col col-40">
+          <button  class="button button-small button-light icon {{starState}} " ng-click="addIntoStar()" > 收藏</button>
+          <button class="button button-small button-light icon {{wishState}}" ng-click="addIntoWish()"> 加入心愿单</button>
+          <button class="button button-small button-light icon {{comeState}}" ng-click="addIntoCome()"> 加入足迹</button>
+          <button class="button button-small button-light icon ion-share" ng-click="showSharePanel()"> 分享</button>
+
+        </div>
+
+      </div>
+      <div style="margin: 20px">
+        <h5>基本信息</h5>
+        <div height="30px">
+          <p>{{sceneIntro}}</p>
+        </div>
+        <h5>评价</h5>
+        <p ng-repeat="i in sceneComment" class="ion-ios-person">  {{i.commentContent}}</p>
+      </div>
+    </ion-scroll>
+
+
+
+  </ion-content>
+  <script id="my-popover.html" type="text/ng-template">
+    <ion-popover-view>
+      <ion-header-bar>
+        <h1 class="title">评价</h1>
+
+      </ion-header-bar>
+      <ion-content overflow-scroll="true" style="overflow: hidden; margin:20px" >
+
+        <!--<div ng-controller="RatingDemoCtrl">-->
+          <!--<h4>Default</h4>-->
+          <!--<uib-rating ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></uib-rating>-->
+          <!--<span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>-->
+
+          <!--<pre style="margin:15px 0;">Rate: <b>{{rate}}</b> - Readonly is: <i>{{isReadonly}}</i> - Hovering over: <b>{{overStar || "none"}}</b></pre>-->
+
+          <!--<button type="button" class="btn btn-sm btn-danger" ng-click="rate = 0" ng-disabled="isReadonly">Clear</button>-->
+          <!--<button type="button" class="btn btn-sm btn-default" ng-click="isReadonly = ! isReadonly">Toggle Readonly</button>-->
+          <!--<hr />-->
+
+          <!--<h4>Custom icons</h4>-->
+          <!--<div ng-init="x = 5"><uib-rating ng-model="x" max="15" state-on="'glyphicon-ok-sign'" state-off="'glyphicon-ok-circle'" aria-labelledby="custom-icons-1"></uib-rating> <b>(<i>Rate:</i> {{x}})</b></div>-->
+          <!--<div ng-init="y = 2"><uib-rating ng-model="y" rating-states="ratingStates" aria-labelledby="custom-icons-2"></uib-rating> <b>(<i>Rate:</i> {{y}})</b></div>-->
+        <!--</div>-->
+        <rating ng-model="rating.rate" max="rating.max" style="display: inline"></rating>
+        <input type="text"  ng-model="commentInput" placeholder="请输入您的评价">
+
+        <button class="icon ion-ios-plus-outline">添加图片</button>
+        <button class="button-light" ng-click="submitScore(commentInput)">提交</button>
+      </ion-content>
+    </ion-popover-view>
+  </script>
+
+
+
+  <ion-footer-bar>
+
+
+
+
+    <div class="button-bar">
+      <button class="button button-light" ng-click="showDetailProfile()">详细资料</button>
+      <button class="button button-light" ng-click="evaluation()" >评价</button>
+
+      <button class="button button-light" ng-click="goScene()">到这去</button>
+      <button ng-click="openPopover($event)">打开浮动框</button>
+    </div>
+
+
+
+
+
+
+
+
+  </ion-footer-bar>
+
+
+
+</ion-view>
+
