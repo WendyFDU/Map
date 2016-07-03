@@ -13,4 +13,6 @@ public interface SceneRepository extends JpaRepository<Scene, Integer> {
 
     Scene findBySceneId(int sceneid);
 
+    List<Scene> findBySceneNameContaining(String keyword);
+
 }

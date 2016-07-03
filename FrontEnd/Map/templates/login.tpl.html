@@ -1,0 +1,31 @@
+<ion-view class="my-view">
+  <ion-nav-title class="my-view-title">请先登录</ion-nav-title>
+  <ion-content>
+    <form name="loginForm" novalidate ng-submit="signIn(loginForm)">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">用户名：</span>
+          <input type="text" name="loginUsername" ng-model="login.username" ng-pattern="/[0-9_a-zA-Z]{1,20}$/"
+                 placeholder="你的用户名" required>
+        </label>
+
+        <label class="item item-input">
+          <span class="input-label">密码：</span>
+          <input type="password" name="loginPassword" ng-model="login.password" ng-pattern="/^[0-9a-zA-Z]{6,10}$/"
+                 placeholder="6-10位英文或数字" required>
+        </label>
+      </div>
+
+      <div class="padding">
+        <button class="button" id="loginButton"
+                type="submit">立即登录
+        </button>
+      </div>
+    </form>
+    <div style="position:absolute;right: 20px;top:125px;">
+      <button class="button button-clear button-positive" ng-click="showRegister()">
+        没有账号？去注册→
+      </button>
+    </div>
+  </ion-content>
+</ion-view>

@@ -11,4 +11,6 @@ import java.util.List;
 public interface PictureRepository extends JpaRepository<Picture, Integer> {
 
     List<Picture> findBySceneId(int sceneid);
+
+
 }

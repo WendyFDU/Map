@@ -4,7 +4,7 @@
     <div class="h1 title">我的</div>
   </ion-header-bar>
 
-  <ion-content ng-controller="MyDetailCtrl">
+  <ion-content class="my-detail-wrapper" ng-controller="MyDetailCtrl">
 
     <div class="my-head">
       <img src="./img/ben.png">
@@ -12,10 +12,10 @@
 
     <p>名字</p>
 
-    <div class="button-bar bar-light my-detail-button-bar">
-      <a class="button" ng-click="showRegister()">注册</a>
-      <a class="button">登录</a>
-    </div>
+    <!--<div class="button-bar bar-light my-detail-button-bar">-->
+      <!--<a class="button" ng-click="showRegister()">注册</a>-->
+      <!--<a class="button" ng-click="showLogin()">登录</a>-->
+    <!--</div>-->
 
     <ul class="my-detail-button">
       <li><button class="button button-light" ng-click="showFootprint()">
@@ -31,7 +31,11 @@
         分享
       </button></li><li><button class="button button-light" ng-click="showAbout()">
       关于我们
-    </button></li>
+    </button>
+    </li><li><button class="button button-light" ng-click="showLogin()">
+      退出
+    </button>
+    </li>
 
     </ul>
 

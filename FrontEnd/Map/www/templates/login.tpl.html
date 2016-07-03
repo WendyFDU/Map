@@ -1,7 +1,7 @@
 <ion-view class="my-view">
   <ion-nav-title class="my-view-title">请先登录</ion-nav-title>
   <ion-content>
-    <form name="loginForm" novalidate ng-submit="signIn(loginForm)" >
+    <form name="loginForm" novalidate ng-submit="signIn(loginForm)">
       <div class="list">
         <label class="item item-input">
           <span class="input-label">用户名：</span>
@@ -21,9 +21,11 @@
                 type="submit">立即登录
         </button>
       </div>
-
     </form>
-
-
+    <div style="position:absolute;right: 20px;top:125px;">
+      <button class="button button-clear button-positive" ng-click="showRegister()">
+        没有账号？去注册→
+      </button>
+    </div>
   </ion-content>
 </ion-view>

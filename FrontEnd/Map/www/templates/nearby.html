@@ -1,10 +1,10 @@
-<ion-view hide-nav-bar="true" >
+<ion-view hide-nav-bar="true" xmlns="">
   <ion-header-bar>
     <button class="button button-icon icon ion-arrow-return-left " ng-click="backToMap()"></button>
     <div class="h1 title">附近</div>
   </ion-header-bar>
 
-  <ion-content ng-controller="NearbyCtrl" overflow-scroll="true" style="overflow: hidden" >
+  <ion-content overflow-scroll="true" style="overflow: hidden">
 
     <!--搜索框-->
     <div class="list">
@@ -20,51 +20,66 @@
 
     <!--图层-->
     <ion-list width="30dp" style="position: absolute;right: 0">
-      <ion-checkbox ng-repeat="item in checkTypeList"  ng-click="clickTheCheckbox({{item.id}})" ng-model="item.checked" style="padding:4px;padding-left: 60px;">{{item.name}}</ion-checkbox>
+      <ion-checkbox ng-repeat="item in checkTypeList" ng-click="clickTheCheckbox({{item.id}})" ng-model="item.checked"
+                    style="padding:4px;padding-left: 60px;">{{item.name}}
+      </ion-checkbox>
     </ion-list>
-    <div>
-      <span>{{checkTypeList[0].checked}} {{checkTypeList[1].checked}} {{checkTypeList[2].checked}}</span>
-    </div>
 
     <!--项目详情-->
-    <div class="card nearby-item-detail" style="position: absolute;right: 0;bottom: 253px;margin:0">
+    <!--<script id="nearby-result-popover.html" type="text/ng-template">-->
+      <!--<ion-popover-view>-->
+        <!--<ion-header-bar>-->
+          <!--<h1 class="title">{{selectedPoint.name}}</h1>-->
+          <!--<h3>{{selectedPoint.sortType}} : {{selectedPoint.show}}</h3>-->
+        <!--</ion-header-bar>-->
+        <!--<ion-content overflow-scroll="true" style="overflow: hidden; margin:20px">-->
+          <!--<img src="{{selectedPoint.img}}" width="50px">-->
+          <!--<button class="button button-small" ng-click="jumpToSceneDetail(selectedPoint.id,selectedPoint.name)">-->
+            <!--进入项目主页-->
+          <!--</button>-->
+        <!--</ion-content>-->
+      <!--</ion-popover-view>-->
+    <!--</script>-->
+    <div class="nearby-result-card">
       <div class="item item-divider">
         <h2>{{selectedPoint.name}}</h2>
-        <h3>  {{selectedPoint.sortType}} : {{selectedPoint.show}}</h3>
       </div>
       <div class="item item-text-wrap">
-        <img src="{{selectedPoint.img}}" width="50px">
-      </div>
-      <div class="item item-divider">
-        <button class="button button-small"  ng-click = "jumpToSceneDetail(selectedPoint.id,selectedPoint.name)">
+        <h3>评分 : {{selectedPoint.show}}</h3>
+        <p><img src="{{selectedPoint.img}}" height="100px"/></p>
+        <button class="button button-small button-positive" ng-click="jumpToSceneDetail(selectedPoint.id)">
           进入项目主页
         </button>
       </div>
     </div>
 
     <!--显示地图-->
-    <div id="main-screen" style="overflow: visible;height: 50%;width: 100%" >
-      <div id="nearby-map" style="overflow: visible;height: 100%;width:100%"></div>
+    <div id="main-screen" style="overflow: visible;">
+      <div id="nearby-map" style="overflow: visible;height: 380px;width:100%"></div>
     </div>
 
     <!--附近项目列表-->
-    <ion-scroll  direction="y" locking="true" style="width:100%; height: 25%;background-color:#ffffff; " >
+    <ion-scroll direction="y" locking="true" style="width:100%; height: 25%;background-color:#ffffff; ">
       <div class=" card">
-        <a class="item item-text-wrap" ng-repeat="item in itemList" ng-click = "jumpToSceneDetail(item.id,item.name)">
+        <a class="item item-text-wrap" ng-repeat="item in itemList" ng-click="jumpToSceneDetail(item.id)">
           <h2>{{item.name}}</h2>
-          <h3>  {{item.sortType}} : {{item.show}}</h3>
+          <h3>{{item.sortType}} : {{item.show}}</h3>
         </a>
       </div>
     </ion-scroll>
 
     <!--排序-->
-    <div class="nearby-foot-menu">
-      <section ng-init="tab = 1" ng-controller="RankController as rankPanel">
+    <div class = "nearby-foot-menu">
+      <section ng-init="tab = 1" ng-controller="TypeController0 as rankPanel">
         <div class="button-bar">
-          <a class=" button button-small button-light" href ng-class="{ active:rankPanel.isSelectTab(1)}"  ng-click="rankPanel.selectTab(1)"><i class="icon-left ion-home"></i>评分</a>
-          <a class=" button button-small button-light" href ng-class="{ active:rankPanel.isSelectTab(2)}"  ng-click="rankPanel.selectTab(2)" ><i class="icon-left ion-star"></i>收藏</a>
-          <a class=" button button-small button-light" href ng-class="{ active:rankPanel.isSelectTab(3)}"  ng-click="rankPanel.selectTab(3)" ><i class="icon-left ion-star"></i>足迹</a>
-          <a class=" button button-small button-light" href ng-class="{ active:rankPanel.isSelectTab(4)}"  ng-click="rankPanel.selectTab(4)"><i class="icon-left ion-star"></i>心愿</a>
+          <a class=" button button-small button-light" href ng-class="{ active:rankPanel.isSelectSortTab(1)}"
+             ng-click="rankPanel.selectSortTab(1)"><i class="icon-left ion-home"></i>评分</a>
+          <a class=" button button-small button-light" href ng-class="{ active:rankPanel.isSelectSortTab(2)}"
+             ng-click="rankPanel.selectSortTab(2)"><i class="icon-left ion-star"></i>收藏</a>
+          <a class=" button button-small button-light" href ng-class="{ active:rankPanel.isSelectSortTab(3)}"
+             ng-click="rankPanel.selectSortTab(3)"><i class="icon-left ion-star"></i>足迹</a>
+          <a class=" button button-small button-light" href ng-class="{ active:rankPanel.isSelectSortTab(4)}"
+             ng-click="rankPanel.selectSortTab(4)"><i class="icon-left ion-star"></i>心愿</a>
         </div>
       </section>
     </div>

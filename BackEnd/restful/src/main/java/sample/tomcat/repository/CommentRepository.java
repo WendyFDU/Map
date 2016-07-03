@@ -15,4 +15,6 @@ public  interface CommentRepository extends JpaRepository<Comment, Integer> {
     List<Comment> findBySceneIdAndCommentTypeOrderByCommentTimeDesc(int sceneid, int commenttype);
 
     Comment findBySceneIdAndUserId(int sceneid, int userid);
+
+
 }

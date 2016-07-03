@@ -22,11 +22,15 @@
     <div class="card">
       <div class="item item-divider">
         图片
-        <button class="icon button-icon ion-ios-more ">更多</button>
+        <button class="icon button-icon ion-ios-more " ng-click="allPic()">更多</button>
       </div>
-      <div class="item item-text-wrap" ng-repeat="i in pictures">
-        {{i.picUrl}}kkk
+      <div class="item item-image">
+        <img ng-src="{{picUrl}}">
       </div>
+
+      <!--<div class="item item-text-wrap" ng-repeat="i in pictures">-->
+        <!--{{i.picUrl}}-->
+      <!--</div>-->
     </div>
     <div class="card">
 
@@ -37,6 +41,21 @@
 
 
   </ion-content>
+  <script id="bug-popover.html" type="text/ng-template">
+    <ion-popover-view>
+      <ion-header-bar>
+        <h1 class="title">报错</h1>
+
+      </ion-header-bar>
+      <ion-content overflow-scroll="true" style="overflow: hidden; margin:20px" >
+
+        <rating ng-model="rating.rate" max="rating.max" style="display: inline"></rating>
+        <input type="text"  ng-model="commentInput" placeholder="请填写您的报错信息">
+
+        <button class="button-light" ng-click="submitBug(commentInput)">提交</button>
+      </ion-content>
+    </ion-popover-view>
+  </script>
 
 
 
@@ -78,7 +97,7 @@
       <button class="button button-light" ng-click="addIntoWishlist()">加入心愿单</button>
       <button class="button button-light" ng-click="addIntoCome()" >加入足迹</button>
 
-      <button class="button button-light" >报错</button>
+      <button class="button button-light" ng-click="clickBug($event)" >报错</button>
     </div>
 
 

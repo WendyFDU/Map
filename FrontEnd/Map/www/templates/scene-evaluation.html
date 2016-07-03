@@ -3,20 +3,20 @@
   <ion-header-bar>
     <button class="button button-icon icon ion-arrow-return-left " ng-click="back()"></button>
     <button class="button button-icon icon ion-navicon " ng-click="showMenuItemList()"></button>
-    <div class="h1 title">{{sceneId}}的评价</div>
+    <div class="h1 title">{{sceneName}}的评价</div>
   </ion-header-bar>
 
 
   <ion-content overflow-scroll="true" style="overflow: hidden" >
 
     <div id="main-screen" style="overflow: visible;height: 100%;width: 100%" >
-      <div id="evaluationmap" style="overflow: visible;height: 100%;width:100%"></div>
+      <div id="evaluationmap" style="overflow: visible;height: 500px;width:100%"></div>
     </div>
     <div class="card"  style="margin:0;width:100%; height: 30%;background-color:#ffffff;position: absolute;bottom: 0 " >
       <div style="margin: 10px">
         <div>
 
-          <button class="icon ion-ios-heart-outline" ng-repeat="acType in activityTypes">   {{acType.name}}</button>
+          <button ng-repeat="acType in activityTypes"><img ng-src="{{acType.icon}}" style="height: 20px;width:20px;" > {{acType.name}}</button>
 
 
         </div>
@@ -52,7 +52,7 @@
     <button class="button button-light" ng-click="placeTypeClick()">场所类型</button>
     <button class="button button-light" ng-click="giveSuggestionClick()">建议</button>
     <button class="button button-light" ng-click="goToEvaluate()">去评价</button>
-    <button class="button button-light">调查问卷</button>
+    <button class="button button-light" ng-click="goToQuestionnaire()">调查问卷</button>
 
 
 

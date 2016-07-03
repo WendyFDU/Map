@@ -1,0 +1,35 @@
+<ion-view hide-nav-bar="true" >
+  <ion-header-bar>
+    <!--<div class="bar bar-header">-->
+      <!--<button class="button button-icon icon ion-navicon "></button>-->
+      <!--<div class="h1 title">城市景观大众点评</div>-->
+    <!--</div>-->
+    <button class="button button-icon icon ion-android-arrow-back " ng-click="back()"></button>
+    <button class="button button-icon icon ion-navicon " ng-click=" showMenuItemList();"></button>
+
+    <div class="h1 title">调查问卷</div>
+  </ion-header-bar>
+
+  <ion-content >
+    <div class="list">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">请问您是公共交通出行吗?</span>
+        <input type="text" >
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">对附近的公共设施有何意见?</span>
+        <input type="text" >
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">请问您来游览的时间为礼拜几?</span>
+        <input type="text" >
+      </label>
+      <button class="button button-block button-positive" ng-click="submitQuestionnaire()">提交</button>
+    </div>
+
+
+  </ion-content>
+
+
+</ion-view>
+

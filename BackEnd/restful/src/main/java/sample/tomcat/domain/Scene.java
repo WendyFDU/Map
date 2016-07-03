@@ -4,6 +4,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "scenes", schema = "test", catalog = "")
+//@NamedQuery(name = "Scene.findBySceneNameLike",
+//        query = "select u from scenes u where u.scene_name like %keyword%")
 public class Scene {
 
     @Id
@@ -18,7 +20,7 @@ public class Scene {
     private int sceneVisited;
 
     @Column(name = "scene_score")
-    private int sceneScore;
+    private double sceneScore;
 
     @Column(name = "scene_favor")
     private int sceneFavor;
@@ -33,10 +35,10 @@ public class Scene {
     private int sceneType;
 
     @Column(name = "scene_x")
-    private long sceneX;
+    private double sceneX;
 
     @Column(name = "scene_y")
-    private long sceneY;
+    private double sceneY;
 
     @Column(name = "scene_score1")
     private int sceneScore1;
@@ -80,11 +82,11 @@ public class Scene {
         this.sceneVisited = sceneVisited;
     }
 
-    public int getSceneScore() {
+    public double getSceneScore() {
         return sceneScore;
     }
 
-    public void setSceneScore(int sceneScore) {
+    public void setSceneScore(double sceneScore) {
         this.sceneScore = sceneScore;
     }
 
@@ -120,19 +122,19 @@ public class Scene {
         return sceneType;
     }
 
-    public long getSceneX() {
+    public double getSceneX() {
         return sceneX;
     }
 
-    public void setSceneX(long sceneX) {
+    public void setSceneX(double sceneX) {
         this.sceneX = sceneX;
     }
 
-    public long getSceneY() {
+    public double getSceneY() {
         return sceneY;
     }
 
-    public void setSceneY(long sceneY) {
+    public void setSceneY(double sceneY) {
         this.sceneY = sceneY;
     }
 

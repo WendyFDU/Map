@@ -21,6 +21,9 @@ public class Picture {
     @Column(name = "pic_url", nullable = false)
     private String picUrl;
 
+    @Column(name = "pic_info")
+    private String picInfo;
+
     public Picture(){
 
     }
@@ -53,10 +56,19 @@ public class Picture {
         this.picId = picId;
     }
 
-    public Picture(int userid, int sceneid, String url){
+    public String getPicInfo() {
+        return picInfo;
+    }
+
+    public void setPicInfo(String picInfo) {
+        this.picInfo = picInfo;
+    }
+
+    public Picture(int userid, int sceneid, String url, String info){
         this.userId = userid;
         this.sceneId = sceneid;
         this.picUrl = url;
+        this.picInfo = info;
 
     }
 

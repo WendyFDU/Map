@@ -22,7 +22,7 @@ public class Comment {
     @Column(name = "comment_score", nullable = false)
     private int commentScore;
 
-    @Column(name = "comment_content", nullable = false)
+    @Column(name = "comment_content")
     private String commentContent;
 
     @Column(name = "comment_type", nullable = false)

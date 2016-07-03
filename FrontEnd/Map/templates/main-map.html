@@ -1,0 +1,203 @@
+<ion-view hide-nav-bar="true" >
+
+  <ion-header-bar>
+
+    <button class="button button-icon icon ion-navicon " ng-click="showMenuItemList()"></button>
+    <div class="h1 title">城市景观大众点评</div>
+  </ion-header-bar>
+
+
+  <ion-content overflow-scroll="true" style="overflow: hidden">
+    <!--<div class="bar bar-header item-input-inset">-->
+      <!--<label class="item-input-wrapper">-->
+        <!--<i class="icon ion-ios-search placeholder-icon"></i>-->
+        <!--<input type="search" placeholder="Search">-->
+      <!--</label>-->
+      <!--<button class="button button-clear">-->
+        <!--Cancel-->
+      <!--</button>-->
+    <!--</div>-->
+
+    <!--<div class="list list-inset">-->
+      <!--<label class="item item-input">-->
+        <!--<i class="icon ion-search placeholder-icon"></i>-->
+        <!--<input type="text" placeholder="Search">-->
+      <!--</label>-->
+    <!--</div>-->
+
+    <div class="list" style="margin-bottom:0px;">
+
+      <div class="item item-input-inset">
+        <label class="item-input-wrapper">
+          <input type="text" placeholder="搜索" ng-model="searchInput">
+        </label>
+        <button class="button button-small" ng-click="search(searchInput,$event)">
+          Submit
+        </button>
+      </div>
+
+    </div>
+
+    <ion-list width="30dp" style="position: absolute;right: 0">
+
+
+      <ion-checkbox ng-repeat="item in checkTypeList"  ng-click="clickTheCheckbox({{item.id}})" ng-model="item.checked" style="padding:4px;padding-left: 60px;">{{item.name}}</ion-checkbox>
+      <!--<ion-checkbox ng-model="checkType.industry"style="padding:4px;padding-left: 60px;">上海工业遗址</ion-checkbox>-->
+      <!--<ion-checkbox ng-model="filter.pink"style="padding:4px;padding-left: 60px;">Pink</ion-checkbox>-->
+
+    </ion-list>
+
+    <div id="main-screen" style="overflow: visible;height: 100%;width: 100%" >
+      <!--img src="img/fakemap.png" width="100%" height="500dp"-->
+      <div id="allmap" style="overflow: visible;height: 500px;width:100%"></div>
+    </div>
+
+    <!--<div id="main-screen" style="overflow: visible;height: 500pt;width: 500pt" >-->
+      <!--&lt;!&ndash;img src="img/fakemap.png" width="100%" height="500dp"&ndash;&gt;-->
+      <!--<div id="allmap" style="overflow: visible;height: 500pt;width: 500pt"></div>-->
+    <!--</div>-->
+
+
+  </ion-content>
+  <script id="mainmap-result-popover.html" type="text/ng-template">
+    <ion-popover-view>
+      <ion-header-bar>
+        <h1 class="title">搜索结果</h1>
+      </ion-header-bar>
+      <ion-content overflow-scroll="true" style="overflow: hidden; margin:20px" >
+        <!--<div class="list">-->
+
+          <!--<a class="item"  ng-repeat="item in  searchResult" ng-click="jumpToSceneDetail(item.sceneId)">-->
+            <!--{{item.sceneName}}-->
+            <a class="item"  ng-repeat="item in  allSceneArray | filter : {name : searchSceneName} " ng-click="jumpToSceneDetail(item.id)">
+              {{item.name}}
+            </a>
+          <!--</a>-->
+        <!--</div>-->
+
+      </ion-content>
+    </ion-popover-view>
+  </script>
+
+
+  <!--<div id="main-screen" width="100%" height="100%">-->
+  <!--<img src="img/fakemap.png" width="100%" height="500dp">-->
+  <!--</div>-->
+
+
+
+    <!--<ion-tabs class="tabs-icon-bottom tabs-color-active-positive">-->
+      <!--&lt;!&ndash; Dashboard Tab &ndash;&gt;-->
+      <!--<ion-tab title="项目列表" icon-off="ion-ios-pulse" icon-on="ion-ios-pulse-strong" >-->
+        <!--<ion-nav-view name="tab-dash"></ion-nav-view>-->
+      <!--</ion-tab>-->
+
+      <!--&lt;!&ndash; Chats Tab &ndash;&gt;-->
+      <!--<ion-tab title="附近" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" >-->
+        <!--<ion-nav-view name="tab-chats"></ion-nav-view>-->
+      <!--</ion-tab>-->
+
+      <!--<ion-tab title="搜索历史" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" >-->
+        <!--<ion-nav-view name="tab-account"></ion-nav-view>-->
+      <!--</ion-tab>-->
+
+      <!--&lt;!&ndash; Account Tab &ndash;&gt;-->
+      <!--<ion-tab title="路线规划" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" >-->
+        <!--<ion-nav-view name="tab-account"></ion-nav-view>-->
+      <!--</ion-tab>-->
+      <!--&lt;!&ndash; Account Tab &ndash;&gt;-->
+      <!--<ion-tab title="我的" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" >-->
+        <!--<ion-nav-view name="tab-account"></ion-nav-view>-->
+      <!--</ion-tab>-->
+
+
+    <!--</ion-tabs>-->
+
+
+  <!--</ion-footer-bar>-->
+  <ion-footer-bar>
+
+
+
+
+    <button class="button button-light" ng-click="showItemList()">项目列表</button>
+    <button class="button button-light" ng-click="showNearby()">附近</button>
+    <button class="button button-light" ng-click="showSearchHistory()">搜索历史</button>
+    <button class="button button-light" ng-click="showRoutePlanning()">路线规划</button>
+    <button class="button button-light" ng-click="showMyDetail()">我的</button>
+
+
+
+
+  </ion-footer-bar>
+
+
+
+</ion-view>
+
+
+
+<!--<ion-view hide-nav-bar="true" >-->
+
+  <!--<ion-header-bar>-->
+
+    <!--<button class="button button-icon icon ion-navicon " ng-click="showMenuItemList()"></button>-->
+    <!--<div class="h1 title">城市景观大众点评</div>-->
+  <!--</ion-header-bar>-->
+
+
+  <!--<ion-content overflow-scroll="true" style="overflow: hidden">-->
+    <!--<div class="list">-->
+
+      <!--<div class="item item-input-inset">-->
+        <!--<label class="item-input-wrapper">-->
+          <!--<input type="text" placeholder="Email" ng-model="searchInput">-->
+        <!--</label>-->
+        <!--<button class="button button-small" ng-click="search(searchInput)">-->
+          <!--Submit-->
+        <!--</button>-->
+      <!--</div>-->
+
+    <!--</div>-->
+
+    <!--<ion-list width="30dp" style="position: absolute;right: 0">-->
+
+
+      <!--<ion-checkbox ng-repeat="item in checkTypeList"  ng-click="clickTheCheckbox({{item.id}})" ng-model="item.checked" style="padding:4px;padding-left: 60px;">{{item.name}}</ion-checkbox>-->
+      <!--&lt;!&ndash;<ion-checkbox ng-model="checkType.industry"style="padding:4px;padding-left: 60px;">上海工业遗址</ion-checkbox>&ndash;&gt;-->
+      <!--&lt;!&ndash;<ion-checkbox ng-model="filter.pink"style="padding:4px;padding-left: 60px;">Pink</ion-checkbox>&ndash;&gt;-->
+
+    <!--</ion-list>-->
+    <!--<div>-->
+      <!--<span>{{checkTypeList[0].checked}} {{checkTypeList[1].checked}} {{checkTypeList[2].checked}}</span>-->
+    <!--</div>-->
+
+    <!--<div id="main-screen" style="overflow: visible;height: 100%;width: 100%" >-->
+      <!--&lt;!&ndash;img src="img/fakemap.png" width="100%" height="500dp"&ndash;&gt;-->
+      <!--<div id="allmap" style="overflow: visible;height:500px;width:100%"></div>-->
+    <!--</div>-->
+
+  <!--</ion-content>-->
+
+  <!--<ion-footer-bar>-->
+
+
+
+
+    <!--<button class="button button-light" ng-click="showItemList()">项目列表</button>-->
+    <!--<button class="button button-light" >附近</button>-->
+
+    <!--<button class="button button-light">搜索历史</button>-->
+
+    <!--<button class="button button-light">路线规划</button>-->
+    <!--<button class="button button-light" >我的</button>-->
+
+
+
+
+  <!--</ion-footer-bar>-->
+
+
+
+<!--</ion-view>-->
+

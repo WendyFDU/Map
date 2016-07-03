@@ -5,7 +5,8 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','mainmap.controllers','menuitemlist.controllers','itemlist.controllers','searchHistory.controllers','myDetail.controllers','register.controllers','nearby.controllers','routePlanning.controllers'])
+var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','mainmap.controllers','menuitemlist.controllers','itemlist.controllers'
+  ,'searchHistory.controllers','myDetail.controllers','register.controllers','nearby.controllers','routePlanning.controllers','myFootprint.controllers','myWish.controllers','myCollection.controllers'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -48,27 +49,48 @@ var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.se
       templateUrl: 'templates/item-list.html',
       controller:'ItemListCtrl'
     })
+    .state('allPic', {
+      url: '/allPic',
+      templateUrl: 'templates/scene-all-pic.html',
+      controller:'AllPicCtrl',
+      params:{args:{}}
+    })
     .state('sceneDetail',{
       url: '/sceneDetail/:IdOfScene',
+      cache:'false',
       templateUrl: 'templates/scene-detail.html',
       controller:'SceneDetailCtrl'
     })
     .state('sceneDetailProfile',{
-      url: '/sceneDetailProfile/:IdOfScene',
+      url: '/sceneDetailProfile',
+      cache:'false',
       templateUrl: 'templates/scene-detail-profile.html',
-      controller:'SceneDetailProfileCtrl'
+      controller:'SceneDetailProfileCtrl',
+      params:{args:{}}
+
     })
     .state('sceneEvaluation',{
-      url: '/sceneEvaluation/:IdOfScene',
+      url: '/sceneEvaluation',
+      cache:'false',
       templateUrl: 'templates/scene-evaluation.html',
-      controller:'SceneEvaluationCtrl'
+      controller:'SceneEvaluationCtrl',
+      params:{args:{}}
     })
     .state('sceneGoEvaluate',{
-      url: '/sceneGoEvaluate/:IdOfScene',
+      url: '/sceneGoEvaluate',
+      cache:'false',
       templateUrl: 'templates/scene-go-evaluate.html',
-      controller:'SceneGoEvaluateCtrl'
+      controller:'SceneGoEvaluateCtrl',
+      params:{args:{}}
+
     })
-    /*-------------------------------------------------------------------------------------------------------------*/
+    .state('questionnaire',{
+      url: '/questionnaire',
+      templateUrl: 'templates/scene-questionnaire.html',
+      controller:'QuestionnaireCtrl'
+    })
+
+    /*-----------------------------------------------------------------*/
     .state('nearby',{
       url: '/nearby',
       templateUrl: 'templates/nearby.html',
@@ -77,6 +99,7 @@ var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.se
 
     .state('searchHistory',{
       url: '/searchHistory',
+      cache:'false',
       templateUrl: 'templates/search-history.html',
       controller:'SearchHistoryCtrl'
     })
@@ -94,16 +117,19 @@ var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.se
     })
     .state('myFootprint',{
       url: '/myFootprint',
+      cache:'false',
       templateUrl: 'templates/my-footprint.html',
       controller:'MyFootprintCtrl'
     })
     .state('myWish',{
       url: '/myWish',
+      cache:'false',
       templateUrl: 'templates/my-wish.html',
       controller:'MyWishCtrl'
     })
     .state('myCollection',{
       url: '/myCollection',
+      cache:'false',
       templateUrl: 'templates/my-collection.html',
       controller:'MyCollectionCtrl'
     })
@@ -117,8 +143,8 @@ var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.se
       templateUrl: 'templates/my-about.html',
       controller:'MyAboutCtrl'
     })
+    /*-----------------------------------------------------------------------------*/
 
-    /*-------------------------------------------------------------------------------------------------------------*/
     .state('register', {
       url: '/register',
       templateUrl: 'templates/register.tpl.html',

@@ -4,7 +4,7 @@
     <button class="button button-icon icon ion-arrow-return-left " ng-click="back();"></button>
     <button class="button button-icon icon ion-navicon " ng-click=" showMenuItemList();"></button>
 
-    <div class="h1 title">{{sceneId}}使用评价</div>
+    <div class="h1 title">{{sceneName}} 使用评价</div>
   </ion-header-bar>
 
 
@@ -13,8 +13,8 @@
       <!--<span>jjjjjjj</span>-->
     <!--</div>-->
     <div id="main-screen" style="overflow: visible;height: 100%;width: 100%" >
-      <div id="goevaluatemap" style="overflow: visible;height: 100%;width:100%"></div>
-      <div class="ion-ios-heart button-light button-outline button-small" style="position: absolute;top: 140px;left: 200px;color: #009689"><button>10</button></div>
+      <div id="goevaluatemap" style="overflow: visible;height: 500px;width:100%"></div>
+      <!--<div class="ion-ios-heart button-light button-outline button-small" style="position: absolute;top: 140px;left: 200px;color: #009689"><button>10</button></div>-->
 
     </div>
 
@@ -27,21 +27,61 @@
     <!--</div>-->
 
 
-    <div class="card"  style="margin:0;width:100%; height: 30%;background-color:#ffffff;position: absolute;bottom: 0 " >
-      <div style="margin: 10px">
-        <div ng-repeat="acType in activityTypes" style="display: inline">
-          <button class="ion-ios-color-filter" on-drag="dragAType(acType.id)" on-release="releaseAType(acType.id)">{{acType.name}}</button>
-          <!--<button ng-repeat="acType in activityTypes" class=" button  button-icon icon ion-ios-color-filter" on-drag="dragAType(acType.id)" on-release="releaseAType(acType.id)">{{acType.name}}</button>-->
-        </div>
+    <!--<div class="card"  style="margin:0;width:100%; height: 30%;background-color:#ffffff;position: absolute;bottom: 0 " >-->
+      <!--<div style="margin: 10px">-->
+        <!--<div ng-repeat="acType in activityTypes" style="display: inline">-->
+          <!--<button class="button-small" on-drag="dragAType(acType.id)" on-release="releaseAType(acType.id,acType.name,acType.tagType)"><img ng-src="{{acType.icon}}" style="height: 20px;width:20px;" >  {{acType.name}}</button>-->
+          <!--&lt;!&ndash;<button ng-repeat="acType in activityTypes" class=" button  button-icon icon ion-ios-color-filter" on-drag="dragAType(acType.id)" on-release="releaseAType(acType.id)">{{acType.name}}</button>&ndash;&gt;-->
+        <!--</div>-->
+        <!--<div ng-repeat="input in suggestionInput" style="display: inline">-->
+          <!--<button class="button-small"><img ng-src="{{input.icon}}" style="height: 20px;width:20px;" >  {{input.name}}<input style="width: 60px;height:20px;border: solid 1px black" type="text" placeholder="{{input.name}}"></button>-->
+          <!--&lt;!&ndash;<button ng-repeat="acType in activityTypes" class=" button  button-icon icon ion-ios-color-filter" on-drag="dragAType(acType.id)" on-release="releaseAType(acType.id)">{{acType.name}}</button>&ndash;&gt;-->
+        <!--</div>-->
 
-      </div>
 
-    </div>
+      <!--</div>-->
+
+    <!--</div>-->
 
 
 
   </ion-content>
+  <div class="card"  style="margin:0;width:100%; height: 30%;background-color:#ffffff;position: absolute;bottom: 0 " >
+    <div style="margin: 10px">
+      <div ng-repeat="acType in activityTypes" style="display: inline">
+        <button class="button-small" on-drag="dragAType(acType.id)" on-release="releaseAType(acType.id,acType.name,acType.tagType)"><img ng-src="{{acType.icon}}" style="height: 20px;width:20px;" >  {{acType.name}}</button>
+        <!--<button ng-repeat="acType in activityTypes" class=" button  button-icon icon ion-ios-color-filter" on-drag="dragAType(acType.id)" on-release="releaseAType(acType.id)">{{acType.name}}</button>-->
+      </div>
+      <div ng-repeat="input in infraSuggestionInput" style="display: inline">
+        <button class="button-small" ><img ng-src="{{input.icon}}" style="height: 20px;width:20px;" >  {{input.name}}<input ng-model="infraSelect" ng-click="showInfra($event)"style="width: 40px;height:20px;display:inline;border: solid 1px black" type="text" placeholder="请选择"> <input ng-model="infraInput"style="width: 40px;height:20px;display:inline;border: solid 1px black" type="text" placeholder="请输入"></button>
+        <!--<button ng-repeat="acType in activityTypes" class=" button  button-icon icon ion-ios-color-filter" on-drag="dragAType(acType.id)" on-release="releaseAType(acType.id)">{{acType.name}}</button>-->
+      </div>
+      <div ng-repeat="input in otherSuggestionInput" style="display: inline">
+        <button class="button-small" ><img ng-src="{{input.icon}}" style="height: 20px;width:20px;" >  {{input.name}}<input style="width: 40px;height:20px;display:inline;border: solid 1px black" type="text" placeholder="{{input.name}}"></button>
+        <!--<button ng-repeat="acType in activityTypes" class=" button  button-icon icon ion-ios-color-filter" on-drag="dragAType(acType.id)" on-release="releaseAType(acType.id)">{{acType.name}}</button>-->
+      </div>
 
+
+    </div>
+
+  </div>
+
+  <script id="infra-popover.html" type="text/ng-template">
+    <ion-popover-view >
+      <ion-content overflow-scroll="true" style="overflow: hidden; margin:20px" >
+        <ion-scroll  direction="y" locking="true" style="width:100%; height: 100%;" >
+          <div class="list">
+            <a class="item"  ng-repeat="infra in  infraList  " ng-click="addIntoInput(infra)">
+              {{infra}}
+            </a>
+
+          </div>
+        </ion-scroll>
+
+
+      </ion-content>
+    </ion-popover-view>
+  </script>
 
   <ion-footer-bar>
 

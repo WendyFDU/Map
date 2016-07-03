@@ -1,10 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<ion-view class="my-view">
+  <ion-nav-title class="my-view-title">欢迎注册</ion-nav-title>
+  <ion-content>
+    <form name="registerForm" novalidate ng-submit="signIn(registerForm)">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">用户名：</span>
+          <input type="text" name="registerUsername" ng-model="register.username" ng-pattern="/[0-9_a-zA-Z]{1,20}$/"
+                 placeholder="你的用户名" required>
+        </label>
 
-</body>
-</html>
+        <label class="item item-input">
+          <span class="input-label">密码：</span>
+          <input type="password" name="registerPassword" ng-model="register.password" ng-pattern="/^[0-9a-zA-Z]{6,10}$/"
+                 placeholder="6-10位英文或数字" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">自我简介：</span>
+          <input type="text" name="registerIntro" ng-model="register.intro"
+               required>
+        </label>
+
+      </div>
+
+      <div class="padding">
+        <button class="button" id="registerButton"
+                type="submit">立即注册
+        </button>
+      </div>
+    </form>
+
+  </ion-content>
+</ion-view>
+
+
+<!--<ion-header-bar>-->
+<!--<button class="button button-icon icon ion-arrow-return-left " ng-click="back()"></button>-->
+<!--<div class="h1 title">欢迎注册</div>-->
+<!--</ion-header-bar>-->
